@@ -14,6 +14,4 @@ Feature: Registration on https://reqres.in/
     Then API call has failed with the status code 400 and error message "Missing password"
 
 
-  Scenario: Get a list of all existing users and check the status is 200
-    Given user makes a API call in order to get all existing users
-    Then API call is successful with the status code 200
+
