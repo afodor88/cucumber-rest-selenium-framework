@@ -2,6 +2,7 @@ package stepDefinitions;
 
 import io.cucumber.cienvironment.internal.com.eclipsesource.json.JsonObject;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
@@ -39,6 +40,7 @@ public class ReqresSteps {
 
 
     }
+
     @Then("API call is successful with the status code {int}")
     public void api_call_is_successful_with_the_status_code(int statusCode) {
 
@@ -65,6 +67,19 @@ public class ReqresSteps {
 
         Assert.assertEquals(errorMsg, errorMessage);
     }
+
+    @Given("user makes a API call in order to get all existing users")
+    public void user_makes_a_api_call_in_order_to_get_all_existing_users() {
+        RequestSpecification request = RestAssured.given()
+                .baseUri(BASE_URL)
+                .header("Content-Type", "application/json")
+                .header("Accept", "application/json");
+
+
+        response = request.get("/api/users");
+
+    }
+
 
 
 }
