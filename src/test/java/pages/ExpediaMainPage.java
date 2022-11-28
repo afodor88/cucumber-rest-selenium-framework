@@ -67,4 +67,9 @@ public class ExpediaMainPage {
         return element;
     }
 
+    public static WebElement searchButton(WebDriver driver) {
+        element = driver.findElement(By.cssSelector("[type='submit']"));
+        return element;
+    }
+
 }
