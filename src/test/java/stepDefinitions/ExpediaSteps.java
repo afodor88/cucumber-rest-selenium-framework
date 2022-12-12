@@ -11,13 +11,13 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static pages.ExpediaMainPage.*;
+import static pages.ExpediaMainPage.priceList;
 
 public class ExpediaSteps {
 
@@ -101,7 +101,7 @@ public class ExpediaSteps {
     }
 
     @And("the time schedule below")
-    public void the_time_schedule_below(DataTable departingDates) {
+    public void the_time_schedule_below(DataTable departingDates) throws InterruptedException {
         List<String> departures = departingDates.asList();
 
         //Departing date
@@ -114,7 +114,9 @@ public class ExpediaSteps {
             DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("MMM dd, yyyy");
             String formattedDate = date.format(myFormatObj);
             System.out.println(formattedDate);
+            Thread.sleep(1000);
             selectDate(driver, formattedDate).click();
+            Thread.sleep(1000);
             doneButton(driver).click();
 
             DateTimeFormatter expectedDepartingFormat = DateTimeFormatter.ofPattern("MMM dd");
@@ -123,6 +125,27 @@ public class ExpediaSteps {
             System.out.println(currentDepartingButton.getText());
             Assert.assertEquals(currentDepartingButton.getText(), expectedDeparting);
 
+
+
         }
+    }
+
+    @Then("the user clicks search")
+    public void the_user_clicks_search() {
+        searchButton(driver).click();
+    }
+
+    @Then("the user selects the price for the first flight")
+    public void the_user_selects_the_price_for_the_first_flight() throws InterruptedException {
+//        WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(30));
+//        wait.until(ExpectedConditions.visibilityOf(priceList(driver).get(0)));
+
+        //CAN'T GO FURTHER BECAUSE I GET A CAPTCHA THAT CHECKS IF I AM A ROBOT OR NOT
+        //CAN'T GO FURTHER BECAUSE I GET A CAPTCHA THAT CHECKS IF I AM A ROBOT OR NOT
+        //CAN'T GO FURTHER BECAUSE I GET A CAPTCHA THAT CHECKS IF I AM A ROBOT OR NOT
+        //CAN'T GO FURTHER BECAUSE I GET A CAPTCHA THAT CHECKS IF I AM A ROBOT OR NOT
+        //CAN'T GO FURTHER BECAUSE I GET A CAPTCHA THAT CHECKS IF I AM A ROBOT OR NOT
+        priceList(driver).get(0).click();
+        System.out.println(flightPrice(driver).getText());
     }
 }

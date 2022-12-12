@@ -1,6 +1,6 @@
 Feature: Search (The test in this section should be attempted against the Expedia.com website)
 
-  @Expedia
+  @Expedia @BrowserTests
   Scenario: Sign in with no credentials. Ensure the correct error message is displayed.
     Given the user navigates to expedia.com
     Then the user chooses a multi-city with the destinations below
@@ -12,4 +12,5 @@ Feature: Search (The test in this section should be attempted against the Expedi
       | 2022-12-27 |
       | 2022-12-28 |
       | 2022-12-29 |
-
+    Then the user clicks search
+    Then the user selects the price for the first flight

@@ -1,6 +1,6 @@
 Feature: Sign in (All Sign in tests should be attempted against the Automation Practise website)
 
-  @Sauce
+  @Sauce @BrowserTests
   Scenario Outline: Sign in with no credentials. Ensure the correct error message is displayed.
     Given user is on login page
     And user enters "<username>" and "<password>" and clicks login

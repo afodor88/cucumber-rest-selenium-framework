@@ -70,4 +70,14 @@ public class ExpediaMainPage {
         return element;
     }
 
+    public static List<WebElement> priceList(WebDriver driver) {
+        elements = driver.findElements(By.cssSelector("[data-test-id=\"offer-listing\"]"));
+        return elements;
+    }
+
+    public static WebElement flightPrice(WebDriver driver) {
+        element = driver.findElement(By.cssSelector("[class=\"uitk-price-lockup align-start\"] [class=\"uitk-lockup-price\"]"));
+        return element;
+    }
+
 }

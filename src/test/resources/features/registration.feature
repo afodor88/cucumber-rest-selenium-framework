@@ -1,5 +1,6 @@
 Feature: Registration on https://reqres.in/
 
+  @API
   Scenario Outline: Verify if the registration is successful
     When user tries to register with username "<username>" and password "<password>"
     Then API call is successful with the status code <statusCode>
