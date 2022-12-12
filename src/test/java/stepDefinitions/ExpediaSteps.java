@@ -3,17 +3,18 @@ package stepDefinitions;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import static pages.ExpediaMainPage.*;
@@ -88,10 +89,40 @@ public class ExpediaSteps {
             String currentGoingTo = goingToList(driver).get(flightRow).getText();
             String[] splittedGoingTo = currentGoingTo.split("\n");
             currentGoingTo = splittedGoingTo[1];
-            System.out.println(currentGoingTo);
             Assert.assertEquals(expectedGoingTo, currentGoingTo);
+
+
+
         }
 
 
+
+
+    }
+
+    @And("the time schedule below")
+    public void the_time_schedule_below(DataTable departingDates) {
+        List<String> departures = departingDates.asList();
+
+        //Departing date
+
+        for(String departure : departures){
+            WebElement currentDepartingButton = departingList(driver).get(departures.indexOf(departure));
+            currentDepartingButton.click();
+            System.out.println(departure);
+            LocalDate date = LocalDate.parse(departure);
+            DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("MMM dd, yyyy");
+            String formattedDate = date.format(myFormatObj);
+            System.out.println(formattedDate);
+            selectDate(driver, formattedDate).click();
+            doneButton(driver).click();
+
+            DateTimeFormatter expectedDepartingFormat = DateTimeFormatter.ofPattern("MMM dd");
+            String expectedDeparting = date.format(expectedDepartingFormat);
+
+            System.out.println(currentDepartingButton.getText());
+            Assert.assertEquals(currentDepartingButton.getText(), expectedDeparting);
+
+        }
     }
 }

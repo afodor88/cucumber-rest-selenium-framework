@@ -8,5 +8,8 @@ Feature: Search (The test in this section should be attempted against the Expedi
       | Paris (CDG - Roissy-Charles de Gaulle)         | Rome (FCO - Fiumicino-Leonardo da Vinci Intl.) |
       | Rome (FCO - Fiumicino-Leonardo da Vinci Intl.) | Berlin (BER - Brandenburg)                     |
 
-
+    And the time schedule below
+      | 2022-12-27 |
+      | 2022-12-28 |
+      | 2022-12-29 |
 

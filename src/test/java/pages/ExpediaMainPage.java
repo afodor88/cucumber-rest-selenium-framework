@@ -26,6 +26,11 @@ public class ExpediaMainPage {
         return elements;
     }
 
+    public static List<WebElement> departingList(WebDriver driver) {
+        elements = driver.findElements(By.xpath("//button[contains(@aria-label,'Departing')]"));
+        return elements;
+    }
+
 
     public static List<WebElement> goingToList(WebDriver driver) {
         elements = driver.findElements(By.xpath("//button[contains(@aria-label,'Going to')]"));
@@ -52,6 +57,16 @@ public class ExpediaMainPage {
 
     public static WebElement addAnotherFlight(WebDriver driver) {
         element = driver.findElement(By.xpath("//*[text()='Add another flight']"));
+        return element;
+    }
+
+    public static WebElement selectDate(WebDriver driver, String date) {
+        element = driver.findElement(By.cssSelector("[aria-label='"  + date  + "']"));
+        return element;
+    }
+
+    public static WebElement doneButton(WebDriver driver) {
+        element = driver.findElement(By.cssSelector("[data-stid='apply-date-picker']"));
         return element;
     }
 
