@@ -18,11 +18,11 @@ import java.util.concurrent.TimeUnit;
 
 import static pages.ExpediaMainPage.*;
 
-public class expediaSteps {
+public class ExpediaSteps {
 
     WebDriver driver;
 
-    @Before
+    @Before("@Expedia")
     public void setup() {
 
         String projectPath = System.getProperty("user.dir");
@@ -34,7 +34,7 @@ public class expediaSteps {
         this.driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
     }
 
-    @After
+    @After("@Expedia")
     public void tearDown() throws InterruptedException {
         this.driver.manage().deleteAllCookies();
         this.driver.quit();

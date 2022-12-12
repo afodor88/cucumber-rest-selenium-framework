@@ -16,7 +16,7 @@ import static pages.SauceDemoLoginPage.*;
 public class SauceDemoSteps {
 
     WebDriver driver;
-    @Before
+    @Before("@Sauce")
     public void setup(){
 
         String projectPath = System.getProperty("user.dir");
@@ -28,7 +28,7 @@ public class SauceDemoSteps {
         this.driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
     }
 
-    @After
+    @After("@Sauce")
     public void tearDown() throws InterruptedException{
         this.driver.manage().deleteAllCookies();
         this.driver.quit();
