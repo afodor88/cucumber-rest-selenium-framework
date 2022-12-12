@@ -136,14 +136,14 @@ public class ExpediaSteps {
     public void the_user_selects_the_price_for_the_first_flight() throws InterruptedException {
 //        WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(30));
 //        wait.until(ExpectedConditions.visibilityOf(priceList(driver).get(0)));
+//        priceList(driver).get(0).click();
+//        System.out.println(flightPrice(driver).getText());
 
         //CAN'T GO FURTHER BECAUSE I GET A CAPTCHA THAT CHECKS IF I AM A ROBOT OR NOT
         //CAN'T GO FURTHER BECAUSE I GET A CAPTCHA THAT CHECKS IF I AM A ROBOT OR NOT
         //CAN'T GO FURTHER BECAUSE I GET A CAPTCHA THAT CHECKS IF I AM A ROBOT OR NOT
         //CAN'T GO FURTHER BECAUSE I GET A CAPTCHA THAT CHECKS IF I AM A ROBOT OR NOT
         //CAN'T GO FURTHER BECAUSE I GET A CAPTCHA THAT CHECKS IF I AM A ROBOT OR NOT
-        priceList(driver).get(0).click();
-        System.out.println(flightPrice(driver).getText());
     }
 
     @And("the user chooses {int} adults")
