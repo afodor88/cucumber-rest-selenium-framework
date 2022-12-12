@@ -11,6 +11,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -92,10 +93,7 @@ public class ExpediaSteps {
             Assert.assertEquals(expectedGoingTo, currentGoingTo);
 
 
-
         }
-
-
 
 
     }
@@ -106,25 +104,24 @@ public class ExpediaSteps {
 
         //Departing date
 
-        for(String departure : departures){
+        for (String departure : departures) {
             WebElement currentDepartingButton = departingList(driver).get(departures.indexOf(departure));
             currentDepartingButton.click();
-            System.out.println(departure);
+
             LocalDate date = LocalDate.parse(departure);
             DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("MMM dd, yyyy");
             String formattedDate = date.format(myFormatObj);
-            System.out.println(formattedDate);
+
             Thread.sleep(1000);
             selectDate(driver, formattedDate).click();
             Thread.sleep(1000);
-            doneButton(driver).click();
+            doneButtonDate(driver).click();
+            System.out.println("Departure time: " + formattedDate);
 
             DateTimeFormatter expectedDepartingFormat = DateTimeFormatter.ofPattern("MMM dd");
             String expectedDeparting = date.format(expectedDepartingFormat);
 
-            System.out.println(currentDepartingButton.getText());
-            Assert.assertEquals(currentDepartingButton.getText(), expectedDeparting);
-
+            Assert.assertEquals(expectedDeparting, currentDepartingButton.getText());
 
 
         }
@@ -147,5 +144,20 @@ public class ExpediaSteps {
         //CAN'T GO FURTHER BECAUSE I GET A CAPTCHA THAT CHECKS IF I AM A ROBOT OR NOT
         priceList(driver).get(0).click();
         System.out.println(flightPrice(driver).getText());
+    }
+
+    @And("the user chooses {int} adults")
+    public void the_user_chooses_adults(int adults) throws InterruptedException {
+
+        travelers(driver).click();
+        Thread.sleep(1000);
+
+        for (int i = (adults - 1); i > 0; i--) {
+            moreAdults(driver).click();
+
+        }
+        doneButtonGuests(driver).click();
+        Assert.assertEquals(adults + " travelers", travelers(driver).getText());
+
     }
 }

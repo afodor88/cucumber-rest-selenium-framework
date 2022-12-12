@@ -61,12 +61,17 @@ public class ExpediaMainPage {
     }
 
     public static WebElement selectDate(WebDriver driver, String date) {
-        element = driver.findElement(By.cssSelector("[aria-label='"  + date  + "']"));
+        element = driver.findElement(By.cssSelector("[aria-label='" + date + "']"));
         return element;
     }
 
-    public static WebElement doneButton(WebDriver driver) {
+    public static WebElement doneButtonDate(WebDriver driver) {
         element = driver.findElement(By.cssSelector("[data-stid='apply-date-picker']"));
+        return element;
+    }
+
+    public static WebElement doneButtonGuests(WebDriver driver) {
+        element = driver.findElement(By.cssSelector("[data-testid=\"guests-done-button\"]"));
         return element;
     }
 
@@ -77,6 +82,21 @@ public class ExpediaMainPage {
 
     public static WebElement flightPrice(WebDriver driver) {
         element = driver.findElement(By.cssSelector("[class=\"uitk-price-lockup align-start\"] [class=\"uitk-lockup-price\"]"));
+        return element;
+    }
+
+    public static WebElement travelers(WebDriver driver) {
+        element = driver.findElement(By.cssSelector("button[data-testid='travelers-field']"));
+        return element;
+    }
+
+    public static WebElement lessAdults(WebDriver driver) {
+        element = driver.findElement(By.cssSelector("[aria-label='Decrease adults in room 1']"));
+        return element;
+    }
+
+    public static WebElement moreAdults(WebDriver driver) {
+        element = driver.findElement(By.cssSelector("[aria-label=\"Increase adults\"]"));
         return element;
     }
 
